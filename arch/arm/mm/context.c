@@ -132,7 +132,16 @@ static void flush_context(unsigned int cpu)
 			asid = 0;
 		} else {
 			asid = atomic64_xchg(&per_cpu(active_asids, i), 0);
-			__set_bit(ASID_TO_IDX(asid), asid_map);
+			/*
+			 * If this CPU has already been through a
+			 * rollover, but hasn't run another task in
+			 * the meantime, we must preserve its reserved
+			 * ASID, as this is the only trace we have of
+			 * the process it is still running.
+			 */
+			if (asid == 0)
+				asid = per_cpu(reserved_asids, i);
+			__set_bit(asid & ~ASID_MASK, asid_map);
 		}
 		per_cpu(reserved_asids, i) = asid;
 	}
@@ -171,17 +180,19 @@ static u64 new_context(struct mm_struct *mm, unsigned int cpu)
 		/*
 		 * Allocate a free ASID. If we can't find one, take a
 		 * note of the currently active ASIDs and mark the TLBs
-		 * as requiring flushes.
+		 * as requiring flushes. We always count from ASID #1,
+		 * as we reserve ASID #0 to switch via TTBR0 and indicate
+		 * rollover events.
 		 */
-		asid = find_first_zero_bit(asid_map, NUM_USER_ASIDS);
+		asid = find_next_zero_bit(asid_map, NUM_USER_ASIDS, 1);
 		if (asid == NUM_USER_ASIDS) {
 			generation = atomic64_add_return(ASID_FIRST_VERSION,
 							 &asid_generation);
 			flush_context(cpu);
-			asid = find_first_zero_bit(asid_map, NUM_USER_ASIDS);
+			asid = find_next_zero_bit(asid_map, NUM_USER_ASIDS, 1);
 		}
 		__set_bit(asid, asid_map);
-		asid = generation | IDX_TO_ASID(asid);
+		asid |= generation;
 		cpumask_clear(mm_cpumask(mm));
 	}
 
