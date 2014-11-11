@@ -25,9 +25,6 @@
 #ifdef CONFIG_HAS_EARLYSUSPEND
 #include <linux/earlysuspend.h>
 #endif
-#ifdef CONFIG_POWERSUSPEND
-#include <linux/powersuspend.h>
-#endif
 
 #include "mdss_dsi.h"
 #include "mdss_samsung_dsi_panel_common.h"
@@ -2351,10 +2348,6 @@ static int mdss_dsi_panel_on(struct mdss_panel_data *pdata)
 		pr_err("%s: Invalid input data\n", __func__);
 		return -EINVAL;
 	}
-    
-#ifdef CONFIG_POWERSUSPEND
-    set_power_suspend_state_panel_hook(POWER_SUSPEND_INACTIVE);
-#endif
 
 	if (unlikely(!alpm_data))
 		alpm_data = &pdata->alpm_data;
@@ -2567,9 +2560,6 @@ static int mdss_dsi_panel_off(struct mdss_panel_data *pdata)
 end:
 	pinfo->blank_state = MDSS_PANEL_BLANK_BLANK;
 	pr_info("%s : --\n",__func__);
-#ifdef CONFIG_POWERSUSPEND
-    set_power_suspend_state_panel_hook(POWER_SUSPEND_ACTIVE);
-#endif
 	return 0;
 }
 
@@ -4050,8 +4040,6 @@ static int samsung_dsi_panel_event_handler(int event)
 			is_negative_on();
 			break;
 #endif
-        case MDSS_EVENT_RESET:
-            break;
 		default:
 			pr_debug("%s: unhandled event=%d\n", __func__, event);
 			break;
