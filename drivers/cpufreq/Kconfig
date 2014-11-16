@@ -169,6 +169,18 @@ config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
 	help
 	Use the CPUFreq governor 'pegasusq' as default.
 
+config CPU_FREQ_DEFAULT_GOV_LULZACTIVEQ
+	bool "lulzactiveq"
+	select CPU_FREQ_GOV_LULZACTIVEQ
+	help
+	Use the CPUFreq governor 'lulzactiveq' as default.
+
+config CPU_FREQ_DEFAULT_GOV_ZZMOOVE
+	bool "zzmoove"
+	select CPU_FREQ_GOV_ZZMOOVE
+	help
+	Use the CPUFreq governor 'zzmoove' as default.
+
 config CPU_FREQ_DEFAULT_GOV_ABYSSPLUGV2
         bool "abyssplugv2"
         select CPU_FREQ_GOV_ABYSSPLUGV2
@@ -383,6 +395,14 @@ config CPU_FREQ_GOV_CONSERVATIVEX
 config CPU_FREQ_GOV_PEGASUSQ
 	tristate "'pegasusq' cpufreq policy governor"
 
+config CPU_FREQ_GOV_LULZACTIVEQ
+	   tristate "'lulzactiveq' cpufreq governor"
+	   depends on CPU_FREQ
+
+config CPU_FREQ_GOV_ZZMOOVE
+	   tristate "'zzmoove' cpufreq governor"
+	   depends on CPU_FREQ
+
 config CPU_FREQ_GOV_ABYSSPLUGV2
         tristate "'abyssplugv2' cpufreq governor"
         depends on CPU_FREQ && NO_HZ && HOTPLUG_CPU
@@ -479,6 +499,15 @@ config GENERIC_CPUFREQ_CPU0
 	default y
 	help
 	  Samsung TN PowerManagement Feature.
+
+config CPUFREQ_HARDLIMIT
+	bool "CPU Frequency max. hardlimit"
+	default y
+	depends on CPU_FREQ
+	help
+	  Enforce a CPU hardlimit on mpdecision by refusing writes to sysfs
+	  above the given cutoff frequency and returning this cutoff frequency
+	  as get_max_freq(). (Yank555.lu)
 
 menu "x86 CPU frequency scaling drivers"
 depends on X86
