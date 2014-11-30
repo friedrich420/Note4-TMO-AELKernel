@@ -163,6 +163,12 @@ config CPU_FREQ_DEFAULT_GOV_CONSERVATIVEX
 	help
 	  Use the CPUFreq governor 'conservativex' as default.
 
+config CPU_FREQ_DEFAULT_GOV_BLUACTIVE
+	bool "bluactive"
+	select CPU_FREQ_GOV_BLUACTIVE
+	help
+	Use the CPUFreq governor 'bluactive' as default.
+
 config CPU_FREQ_DEFAULT_GOV_PEGASUSQ
 	bool "pegasusq"
 	select CPU_FREQ_GOV_PEGASUSQ
@@ -195,7 +201,7 @@ config CPU_FREQ_DEFAULT_GOV_ABYSSPLUGV2
 
 config CPU_FREQ_DEFAULT_GOV_INTELLIACTIVE
 	bool "intelliactive"
-	select CPU_FREQ_GOV_PEGASUSQ
+	select CPU_FREQ_GOV_INTELLIACTIVE
 	help
 	Use the CPUFreq governor 'intelliactive' as default.
 
@@ -211,9 +217,10 @@ config CPU_FREQ_DEFAULT_GOV_ONDEMANDPLUS
 	     driver. Fallback governor will be the performance governor.
 
 config CPU_FREQ_DEFAULT_GOV_INTELLIDEMAND
-	bool "intellidemand"
-	select CPU_FREQ_GOV_INTELLIDEMAND
-	help
+            bool "intellidemand"
+            select CPU_FREQ_GOV_INTELLIDEMAND
+            help
+              Use the CPUFreq governor 'intellidemand' as default.
 
 config CPU_FREQ_DEFAULT_GOV_SMARTASS2
   	bool "smartassV2"
@@ -392,6 +399,12 @@ config CPU_FREQ_GOV_CONSERVATIVEX
 	help
 	  'conservativex' - less aggressive version of conservative
 
+config CPU_FREQ_GOV_BLUACTIVE
+	tristate "'bluactive' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	  'bluactive' - less aggressive version of conservative
+
 config CPU_FREQ_GOV_PEGASUSQ
 	tristate "'pegasusq' cpufreq policy governor"
 
@@ -446,10 +459,6 @@ config CPU_FREQ_GOV_SMARTASS2
   	help
     	'smartassV2' - a "smart" governor
 
-config CPU_FREQ_GOV_INTELLIDEMAND
-	tristate "'intellidemand' cpufreq governor"
-	depends on CPU_FREQ
-
 config CPU_FREQ_GOV_ADAPTIVE
 	tristate "'adaptive' cpufreq policy governor"
 	---help---
@@ -472,6 +481,24 @@ config CPU_FREQ_GOV_ALUCARD
 config CPU_FREQ_GOV_INTELLIACTIVE
 	tristate "'intelliactive' cpufreq policy governor"
 	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_INTELLIDEMAND
+        tristate "'intellidemand' cpufreq policy governor"
+        select CPU_FREQ_TABLE
+        help
+          'intellidemand' - This driver adds a dynamic cpufreq policy governor.
+          The governor does a periodic polling and
+          changes frequency based on the CPU utilization.
+          The support for this governor depends on CPU capability to
+          do fast frequency switching (i.e, very low latency frequency
+          transitions). with browsing detection based on GPU loading
+
+          To compile this driver as a module, choose M here: the
+          module will be called cpufreq_ondemand.
+
+          For details, take a look at linux/Documentation/cpu-freq.
+
+          If in doubt, say N.
 
 config CPU_BOOST
 	tristate "Event base short term CPU freq boost"
