@@ -148,7 +148,8 @@ static unsigned short slave_crc16;
 static int ecdsa_debug = 1;
 static int total_run=0, fail_run=0;
 
-int verification = -1, id = 2, color, model, detect;	// for samsung
+//int verification = -1, id = 2, color, model, detect;	// for samsung
+int verification = 0, id = 1, color, model = 2, detect;	// for s-view
 #ifdef CONFIG_W1_SN
 char g_sn[14];
 #endif

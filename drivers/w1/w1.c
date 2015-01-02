@@ -527,32 +527,34 @@ void w1_master_search(void);
 #if defined(CONFIG_W1_SLAVE_DS28E15) || defined(CONFIG_W1_SLAVE_DS28EL35)
 static ssize_t w1_master_attribute_show_verify_mac(struct device *dev, struct device_attribute *attr, char *buf)
 {
-	int result = -1;
-#if defined(CONFIG_SEC_FACTORY) && defined(CONFIG_W1_SLAVE_DS28EL35)
-	struct w1_master *md = dev_to_w1_master(dev);
-	struct list_head *ent, *n;
-	struct w1_slave *sl = NULL;
+//	int result = -1;
+//#if defined(CONFIG_SEC_FACTORY) && defined(CONFIG_W1_SLAVE_DS28EL35)
+//	struct w1_master *md = dev_to_w1_master(dev);
+//	struct list_head *ent, *n;
+//	struct w1_slave *sl = NULL;
+//
+//	mutex_lock(&md->mutex);
+//	list_for_each_safe(ent, n, &md->slist) {
+//		sl = list_entry(ent, struct w1_slave, w1_slave_entry);
+//	}
+//
+//	if (sl)
+//		result = w1_ds28el35_verifyecdsa(sl);
+//	else
+//		pr_info("%s: sysfs call fail\n", __func__);
+//	mutex_unlock(&md->mutex);
+//#else
+//	result = verification;
+//#endif
 
-	mutex_lock(&md->mutex);
-	list_for_each_safe(ent, n, &md->slist) {
-		sl = list_entry(ent, struct w1_slave, w1_slave_entry);
-	}
-
-	if (sl)
-		result = w1_ds28el35_verifyecdsa(sl);
-	else
-		pr_info("%s: sysfs call fail\n", __func__);
-	mutex_unlock(&md->mutex);
-#else
-	result = verification;
-#endif
-
-	return sprintf(buf, "%d\n", result);
+//	return sprintf(buf, "%d\n", result);
+    return sprintf(buf, "%d\n", 0);
 }
 
 static ssize_t w1_master_attribute_show_check_id(struct device *dev, struct device_attribute *attr, char *buf)
 {
-	return sprintf(buf, "%d\n", id);
+//	return sprintf(buf, "%d\n", id);
+   return sprintf(buf, "%d\n", 1);
 }
 
 static ssize_t w1_master_attribute_show_check_color(struct device *dev, struct device_attribute *attr, char *buf)
@@ -562,7 +564,8 @@ static ssize_t w1_master_attribute_show_check_color(struct device *dev, struct d
 
 static ssize_t w1_master_attribute_show_check_model(struct device *dev, struct device_attribute *attr, char *buf)
 {
-	return sprintf(buf, "%d\n", model);
+//	return sprintf(buf, "%d\n", model);
+   return sprintf(buf, "%d\n", 2);
 }
 
 static ssize_t w1_master_attribute_show_check_detect(struct device *dev, struct device_attribute *attr, char *buf)
