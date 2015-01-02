@@ -101,8 +101,11 @@ static int special_mode = 0;
 static char special_values[2];
 static char rom_no[8];
 
-//int verification = -1, id = 2, color, model, detect;
-int verification = 0, id = 1, color, model = 2, detect;	// for s-view
+#ifdef CONFIG_SVIEW_BYPASS
+int verification = 0, id = 1, color, model = 2, detect, user = 1;
+#else
+int verification = -1, id = 2, color, model, detect, user = 0;
+#endif
 #ifdef CONFIG_W1_SN
 char g_sn[14];
 #endif
