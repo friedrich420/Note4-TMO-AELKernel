@@ -170,6 +170,9 @@ static int boost_mig_sync_thread(void *data)
 		if (ret)
 			continue;
 
+		if (s->task_load < migration_load_threshold)
+			continue;
+
 		req_freq = load_based_syncs ?
 			(dest_policy.max * s->task_load) / 100 : src_policy.cur;
 
@@ -186,11 +189,7 @@ static int boost_mig_sync_thread(void *data)
 #ifdef CONFIG_CPUFREQ_HARDLIMIT
         s->boost_min = check_cpufreq_hardlimit(req_freq);
 #else
-#ifdef CONFIG_CPUFREQ_LIMIT
-        s->boost_min = check_cpufreq_limit(req_freq);
-#else
 		s->boost_min = req_freq;
-#endif
 #endif
 
 		/* Force policy re-evaluation to trigger adjust notifier. */
@@ -248,7 +247,7 @@ static int boost_migration_notify(struct notifier_block *nb,
 	spin_lock_irqsave(&s->lock, flags);
 	s->pending = true;
 	s->src_cpu = mnd->src_cpu;
-	s->task_load = load_based_syncs ? mnd->load : 0;
+	s->task_load = mnd->load;
 	spin_unlock_irqrestore(&s->lock, flags);
 	wake_up(&s->sync_wq);
 
