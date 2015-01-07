@@ -272,6 +272,27 @@ config CPU_FREQ_DEFAULT_GOV_BIOSHOCK
 	help
 	  Default governor of BioShock kernel
 
+config CPU_FREQ_DEFAULT_GOV_RACCOON_CITY
+	bool "raccoon_city"
+	select CPU_FREQ_GOV_RACCOON_CITY
+	help
+	  Use the CPUFreq governor 'raccoon_city' as default. This sets
+	  the frequency statically to the lowest frequency supported by
+	  the CPU, while considering battery life to prevent unnecessary
+	  drain during suspend.
+
+config CPU_FREQ_DEFAULT_GOV_INTERACTIVE_PRO
+	bool "interactive_pro"
+	select CPU_FREQ_GOV_INTERACTIVE_PRO
+	help
+	Use the CPUFreq governor 'interactive_pro' as default.
+
+config CPU_FREQ_DEFAULT_GOV_SLIM
+	bool "slim"
+	select CPU_FREQ_GOV_SLIM
+	help
+	Use the CPUFreq governor 'slim' as default.
+
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -548,6 +569,23 @@ config CPU_FREQ_GOV_BIOSHOCK
 	depends on CPU_FREQ
 	help
 	  'bioshock' - More aggressive version of conservative
+
+config CPU_FREQ_GOV_RACCOON_CITY
+	tristate "'raccoon_city' cpufreq policy governor"
+	help
+	  'raccoon_city' - This driver adds a dynamic cpufreq policy governor
+	  designed for latency-sensitive workloads.
+
+	  The governor is based on interactive to provide a resident controller
+	  which interprets unnecessary battery drain as evil.
+
+config CPU_FREQ_GOV_INTERACTIVE_PRO
+	tristate "'interactive_pro' cpufreq governor"
+	depends on CPU_FREQ
+
+config CPU_FREQ_GOV_SLIM
+	tristate "'slim' cpufreq governor"
+	depends on CPU_FREQ
 
 config CPU_BOOST
 	tristate "Event base short term CPU freq boost"

@@ -37,6 +37,9 @@ obj-$(CONFIG_CPU_FREQ_GOV_INTELLIACTIVE)+= cpufreq_intelliactive.o
 //obj-$(CONFIG_CPU_FREQ_GOV_INTELLIDEMAND)+= cpufreq_intellidemand.o
 obj-$(CONFIG_CPU_FREQ_GOV_INTELLIMM)	+= cpufreq_intellimm.o
 obj-$(CONFIG_CPU_FREQ_GOV_BIOSHOCK)	+= cpufreq_bioshock.o
+//obj-$(CONFIG_CPU_FREQ_GOV_RACCOON_CITY)	+= cpufreq_raccoon_city.o
+//obj-$(CONFIG_CPU_FREQ_GOV_SLIM)		+= cpufreq_slim.o
+//obj-$(CONFIG_CPU_FREQ_GOV_PSYCHO_ACTIVE)	+= cpufreq_psycho_active.o
 obj-$(CONFIG_CPU_FREQ_GOV_COMMON)		+= cpufreq_governor.o
 obj-$(CONFIG_CPU_BOOST)			+= cpu-boost.o
 

@@ -515,6 +515,15 @@ extern struct cpufreq_governor cpufreq_gov_intellimm;
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_BIOSHOCK)
 extern struct cpufreq_governor cpufreq_gov_bioshock;
 #define CPUFREQ_DEFAULT_GOVERNOR        (&cpufreq_gov_bioshock)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_RACCOON_CITY)
+extern struct cpufreq_governor cpufreq_gov_raccoon_city;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_raccoon_city)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_INTERACTIVE_PRO)
+extern struct cpufreq_governor cpufreq_gov_interactive_pro;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_interactive_pro)
+#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_SLIM)
+extern struct cpufreq_governor cpufreq_gov_slim;
+#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_slim)
 
 #endif
 
