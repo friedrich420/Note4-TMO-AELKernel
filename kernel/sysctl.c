@@ -1084,7 +1084,6 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= proc_dointvec,
 	},
 #endif
-<<<<<<< HEAD
 #if defined(CONFIG_ARM) || defined(CONFIG_ARM64)
 	{
 		.procname	= "boot_reason",
@@ -1132,9 +1131,6 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= wmark_high_kbytes_sysctl_handler,
 		.extra1		= &wmark_low_kbytes,
 	},
-
-=======
->>>>>>> 7161f03... kernel/sysctl.c: move wmark sysfs entries to VM
 	{ }
 };
 
