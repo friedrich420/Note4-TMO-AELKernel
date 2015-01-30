@@ -1084,7 +1084,6 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= proc_dointvec,
 	},
 #endif
-<<<<<<< HEAD
 #if defined(CONFIG_ARM) || defined(CONFIG_ARM64)
 	{
 		.procname	= "boot_reason",
@@ -1106,7 +1105,6 @@ static struct ctl_table kern_table[] = {
  * NOTE: do not add new entries to this table unless you have read
  * Documentation/sysctl/ctl_unnumbered.txt
  */
-=======
 	{
 		.procname	= "wmark_min_kbytes",
 		.data		= &wmark_min_kbytes,
@@ -1134,7 +1132,6 @@ static struct ctl_table kern_table[] = {
 		.extra1		= &wmark_low_kbytes,
 	},
 
->>>>>>> e95b4d9... page_alloc: Make watermarks tunable separately
 	{ }
 };
 
