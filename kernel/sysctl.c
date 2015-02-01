@@ -106,8 +106,6 @@ extern unsigned int core_pipe_limit;
 #endif
 extern int pid_max;
 extern int extra_free_kbytes;
-extern int min_free_kbytes;
-extern int wmark_min_kbytes, wmark_low_kbytes, wmark_high_kbytes;
 extern int min_free_order_shift;
 extern int pid_max_min, pid_max_max;
 extern int percpu_pagelist_fraction;
@@ -1105,6 +1103,7 @@ static struct ctl_table kern_table[] = {
  * NOTE: do not add new entries to this table unless you have read
  * Documentation/sysctl/ctl_unnumbered.txt
  */
+<<<<<<< HEAD
 	{
 		.procname	= "wmark_min_kbytes",
 		.data		= &wmark_min_kbytes,
@@ -1131,6 +1130,8 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= wmark_high_kbytes_sysctl_handler,
 		.extra1		= &wmark_low_kbytes,
 	},
+=======
+>>>>>>> parent of e12c97f... page_alloc: Make watermarks tunable separately
 	{ }
 };
 
