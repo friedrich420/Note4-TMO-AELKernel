@@ -1130,8 +1130,12 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= wmark_high_kbytes_sysctl_handler,
 		.extra1		= &wmark_low_kbytes,
 	},
+<<<<<<< HEAD
 =======
 >>>>>>> parent of e12c97f... page_alloc: Make watermarks tunable separately
+=======
+
+>>>>>>> parent of af7b9dd... kernel/sysctl.c: move wmark sysfs entries to VM
 	{ }
 };
 
@@ -1402,32 +1406,6 @@ static struct ctl_table vm_table[] = {
 		.mode		= 0644,
 		.proc_handler	= proc_dointvec,
 		.extra1		= &zero,
-	},
-	{
-		.procname	= "wmark_min_kbytes",
-		.data		= &wmark_min_kbytes,
-		.maxlen		= sizeof(wmark_min_kbytes),
-		.mode		= 0644,
-		.proc_handler	= wmark_min_kbytes_sysctl_handler,
-		.extra1		= &zero,
-		.extra2		= &wmark_low_kbytes,
-	},
-	{
-		.procname	= "wmark_low_kbytes",
-		.data		= &wmark_low_kbytes,
-		.maxlen		= sizeof(wmark_low_kbytes),
-		.mode		= 0644,
-		.proc_handler	= wmark_low_kbytes_sysctl_handler,
-		.extra1		= &wmark_min_kbytes,
-		.extra2		= &wmark_high_kbytes,
-	},
-	{
-		.procname	= "wmark_high_kbytes",
-		.data		= &wmark_high_kbytes,
-		.maxlen		= sizeof(wmark_high_kbytes),
-		.mode		= 0644,
-		.proc_handler	= wmark_high_kbytes_sysctl_handler,
-		.extra1		= &wmark_low_kbytes,
 	},
 #ifdef HAVE_ARCH_PICK_MMAP_LAYOUT
 	{
