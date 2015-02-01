@@ -1103,7 +1103,6 @@ static struct ctl_table kern_table[] = {
  * NOTE: do not add new entries to this table unless you have read
  * Documentation/sysctl/ctl_unnumbered.txt
  */
-<<<<<<< HEAD
 	{
 		.procname	= "wmark_min_kbytes",
 		.data		= &wmark_min_kbytes,
@@ -1130,12 +1129,6 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= wmark_high_kbytes_sysctl_handler,
 		.extra1		= &wmark_low_kbytes,
 	},
-<<<<<<< HEAD
-=======
->>>>>>> parent of e12c97f... page_alloc: Make watermarks tunable separately
-=======
-
->>>>>>> parent of af7b9dd... kernel/sysctl.c: move wmark sysfs entries to VM
 	{ }
 };
 
