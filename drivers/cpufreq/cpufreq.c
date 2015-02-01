@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  *  linux/drivers/cpufreq/cpufreq.c
  *
@@ -2291,7 +2290,6 @@ static int __init cpufreq_core_init(void)
 	return 0;
 }
 core_initcall(cpufreq_core_init);
-=======
 /*
  *  linux/drivers/cpufreq/cpufreq.c
  *
@@ -4754,4 +4752,3 @@ static int __init cpufreq_core_init(void)
 	return 0;
 }
 core_initcall(cpufreq_core_init);
->>>>>>> 10b9e0f... Added a few CPU Governors [Huge THANKS to @StarKissed]

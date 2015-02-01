@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* arch/arm/mach-msm/cpufreq.c
  *
  * MSM architecture cpufreq driver
@@ -737,7 +736,6 @@ static int __init msm_cpufreq_early_register(void)
 	return register_hotcpu_notifier(&msm_cpufreq_cpu_notifier);
 }
 core_initcall(msm_cpufreq_early_register);
-=======
 /* arch/arm/mach-msm/cpufreq.c
  *
  * MSM architecture cpufreq driver
@@ -1543,4 +1541,3 @@ static int __init msm_cpufreq_early_register(void)
 	return register_hotcpu_notifier(&msm_cpufreq_cpu_notifier);
 }
 core_initcall(msm_cpufreq_early_register);
->>>>>>> 10b9e0f... Added a few CPU Governors [Huge THANKS to @StarKissed]
