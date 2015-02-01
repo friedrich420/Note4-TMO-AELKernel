@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /*
  *  linux/mm/page_alloc.c
  *
@@ -6484,7 +6483,6 @@ void dump_page(struct page *page)
 	dump_page_flags(page->flags);
 	mem_cgroup_print_bad_page(page);
 }
-=======
 /*
  *  linux/mm/page_alloc.c
  *
@@ -12974,4 +12972,3 @@ void dump_page(struct page *page)
 	dump_page_flags(page->flags);
 	mem_cgroup_print_bad_page(page);
 }
->>>>>>> 246a922... Linux 3.10.0 >>> 3.10.5
