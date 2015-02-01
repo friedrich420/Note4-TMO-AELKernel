@@ -221,6 +221,7 @@ static char * const zone_names[MAX_NR_ZONES] = {
  * tuned according to the amount of memory in the system.
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 int min_free_kbytes = 3066;
 int wmark_min_kbytes = 3066;
 int wmark_low_kbytes = 3832;
@@ -228,6 +229,12 @@ int wmark_high_kbytes = 4599;
 =======
 int min_free_kbytes = 1024;
 >>>>>>> parent of e12c97f... page_alloc: Make watermarks tunable separately
+=======
+int min_free_kbytes = 5752;
+int wmark_min_kbytes = 5752;
+int wmark_low_kbytes = 7190;
+int wmark_high_kbytes = 8628;
+>>>>>>> parent of f2d7ba6... page_alloc: set waterwark default values
 int min_free_order_shift = 1;
 
 /*
