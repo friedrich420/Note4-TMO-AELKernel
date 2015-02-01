@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* Copyright (c) 2009-2011, Code Aurora Forum. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -9454,7 +9453,7 @@ char *hmt_color_temperature_tune_value[HMT_COLOR_TEMP_MAX][2] = {
 #endif
 
 #endif
-=======
+
 /* Copyright (c) 2009-2011, Code Aurora Forum. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -19032,4 +19031,3 @@ char *hmt_color_temperature_tune_value[HMT_COLOR_TEMP_MAX][2] = {
 #endif
 
 #endif
->>>>>>> 6b9d244... MDNIE Control [Credits: @Yank555.lu and @StarKissed]
