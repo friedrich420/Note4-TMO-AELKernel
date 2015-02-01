@@ -193,16 +193,14 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # A third alternative is to store a setting in .config so that plain
 # "make" in the configured kernel build directory always uses that.
 # Default value for CROSS_COMPILE is not to prefix executables
-<<<<<<< HEAD
 # Note: Some architectures aossign CROSS_COMPILE in their arch/*/Makefile
 ARCH		?= arm
 CROSS_COMPILE	?= /opt/toolchains/arm-eabi-4.7/bin/arm-eabi-
-=======
+
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 export KBUILD_BUILDHOST := $(SUBARCH)
 ARCH	?= $(SUBARCH)
 CROSS_COMPILE	?= $(CCACHE) $(CONFIG_CROSS_COMPILE:"%"=%)
->>>>>>> e0b8a8e... SaberMod 4.10
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
